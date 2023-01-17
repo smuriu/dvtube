@@ -1,10 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
+    deezer: {
+      app_secret: process.env.DEEZER_APP_SECRET
+    },
     public: {
       deezer: {
-        app_id: '',
-        redirect_uri: '',
+        app_id: process.env.DEEZER_APP_ID,
+        redirect_uri: process.env.DEEZER_REDIRECT_URI,
         perms: 'basic_access'
       }
     }
