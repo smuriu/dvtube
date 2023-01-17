@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@heroicons/vue": "^2.0.13",
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "daisyui": "^2.46.1",
+    "nuxt": "^3.0.0"
+  }
+}
