@@ -17,7 +17,7 @@ const avatarSrc = computed(() => {
     <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
       <li>{{ user.name }}</li>
       <li>
-        <NuxtLink to="/logout">Logout</NuxtLink>
+        <a href="/logout">Logout</a>
       </li>
     </ul>
   </div>

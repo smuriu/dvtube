@@ -15,7 +15,7 @@ const { isLoggedIn } = useDeezer()
       </div>
       <div class="navbar-end gap-4">
         <LazyUserDetail v-if="isLoggedIn" />
-        <NuxtLink v-else to="/login" class="btn btn-outline btn-error">Login</NuxtLink>
+        <a v-else href="/login" class="btn btn-outline btn-error">Login</a>
       </div>
     </div>
     <div class="container mx-auto">
