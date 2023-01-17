@@ -1,4 +1,4 @@
-import { withQuery } from "ufo"
+import { withQuery } from 'ufo'
 
 export default defineEventHandler(async (event) => {
   const { error_reason, code } = getQuery(event)
