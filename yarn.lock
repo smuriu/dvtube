@@ -758,6 +758,11 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.0.tgz#5fb2e536c1ae9bf35366eed879e827fa59ca41c2"
   integrity sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==
 
+"@types/human-format@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/human-format/-/human-format-1.0.0.tgz#b77d8ef5d9638d066c132ec58628d4a9a6163cef"
+  integrity sha512-EpU2OnpDx0b7F93KuhUnsFyLL60h+PWjXsc6QWNU0gHsSqy6Up+7YRqzMHWVcCYjNbaXqYr2g5vpNwOXyUap+A==
+
 "@types/json-schema@^7.0.8":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -2632,6 +2637,11 @@ https-proxy-agent@^5.0.0, https-proxy-agent@^5.0.1:
   dependencies:
     agent-base "6"
     debug "4"
+
+human-format@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/human-format/-/human-format-1.0.0.tgz#bb5ecc618062581f0442769529c553367507e8fe"
+  integrity sha512-ZfSxF/LHVDb5Un52AguYkZArbiuMbJQwpOpZ0MBuj3pYDmLt7pkCEws9L8xKbgnaKrfMgGd6qc+PHBbKO97AaA==
 
 human-signals@^2.1.0:
   version "2.1.0"

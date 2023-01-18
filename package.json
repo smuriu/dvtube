@@ -10,7 +10,9 @@
   "devDependencies": {
     "@heroicons/vue": "^2.0.13",
     "@nuxtjs/tailwindcss": "^6.2.0",
+    "@types/human-format": "^1.0.0",
     "daisyui": "^2.46.1",
+    "human-format": "^1.0.0",
     "nuxt": "^3.0.0"
   }
 }

@@ -2,7 +2,9 @@
 const { data: user } = useFetch('/api/deezer/user')
 
 const avatarSrc = computed(() => {
-  return user.value?.picture_small ?? `https://avatars.dicebear.com/api/adventurer-neutral/${user.value?.id}.svg`
+  if (user.value) {
+    return user.value.picture_small ?? `https://avatars.dicebear.com/api/adventurer-neutral/${user.value.id}.svg`
+  }
 })
 </script>
 
