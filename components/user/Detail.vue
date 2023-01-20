@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: user } = useFetch('/api/deezer/user')
+const { data: user } = await useFetch('/api/deezer/user')
 
 const avatarSrc = computed(() => {
   if (user.value) {
