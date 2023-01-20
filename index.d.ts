@@ -1,3 +1,16 @@
+type DeezerError = {
+  error: {
+    type: string
+    message: string
+    code: number
+  }
+}
+
+interface ListResponse {
+  total: number
+  next?: string
+}
+
 interface Artist {
   id: number
   name: string
@@ -8,4 +21,39 @@ interface Artist {
   picture_xl: string
   nb_album: number
   nb_fan: number
+}
+
+interface Album {
+  id: number
+  title: string
+  link: string
+  cover: string
+  cover_small: string
+  cover_medium: string
+  cover_big: string
+  cover_xl: string
+  genre_id: number
+  fans: number
+  release_date: date
+  record_type: string
+  explicit_lyrics: boolean
+}
+
+interface Track {
+  id: number
+  title: string
+  link: string
+  duration: number
+}
+
+type ArtistList = ListResponse & {
+  data: Artist[]
+}
+
+type TrackList = ListResponse & {
+  data: Track[]
+}
+
+type AlbumList = ListResponse & {
+  data: Album[]
 }

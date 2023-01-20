@@ -15,7 +15,12 @@ const fans = computed(() => {
 })
 
 const handleClick = () => {
-  alert(`Clicked ${props.artist.id}`)
+  useRouter().push({
+    name: 'artist-id',
+    params: {
+      id: props.artist.id
+    }
+  })
 }
 </script>
 

@@ -17,6 +17,12 @@ export default defineNuxtConfig({
     shim: false
   },
   modules: [
+    '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss'
-  ]
+  ],
+  colorMode: {
+    preference: 'night',
+    dataValue: 'theme',
+    classSuffix: ''
+  }
 })

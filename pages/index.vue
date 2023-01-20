@@ -22,7 +22,7 @@ const doSearch = async (term: string) => {
   nextIndex.value = null
 
   try {
-    const uri = withQuery('/api/deezer/artists/search', { term })
+    const uri = withQuery('/api/deezer/search/artist', { term })
     const { data, total, nextIndex: next } = await $fetch<SearchResult>(uri)
     artists.value = data
     totalResults.value = total

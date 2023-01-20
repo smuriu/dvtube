@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// import { Bars3Icon } from '@heroicons/vue/24/outline/esm/index.js'
+import { SunIcon, MoonIcon } from '@heroicons/vue/24/outline/esm/index.js'
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - dvtube` : 'dvtube';
@@ -7,6 +8,18 @@ useHead({
 })
 
 const { isLoggedIn } = useDeezer()
+
+const colorMode = useColorMode()
+const isDarkMode = computed(() => colorMode.preference === 'night')
+
+const toggleDarkMode = () => {
+  if (isDarkMode.value) {
+    colorMode.preference = 'fantasy'
+  }
+  else {
+    colorMode.preference = 'night'
+  }
+}
 </script>
 
 <template>
@@ -19,8 +32,13 @@ const { isLoggedIn } = useDeezer()
         </NuxtLink>
       </div>
       <div class="navbar-end gap-4">
+        <button class="btn btn-circle btn-ghost" @click="toggleDarkMode">
+          <MoonIcon v-if="isDarkMode" Icon class="w-6 h-6" />
+          <SunIcon v-else class="w-6 h-6" />
+        </button>
+
         <LazyUserDetail v-if="isLoggedIn" />
-        <a v-else href="/login" class="btn btn-outline btn-error">Login</a>
+        <a v-else href="/login" class="btn btn-outline btn-primary">Login</a>
       </div>
     </div>
     <div class="container mx-auto page">
