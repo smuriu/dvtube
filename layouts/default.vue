@@ -20,6 +20,14 @@ const toggleDarkMode = () => {
     colorMode.preference = 'night'
   }
 }
+
+const handleError = (error: any) => {
+  console.log(error)
+}
+const recoverFromError = async (error: any) => {
+  await navigateTo('/');
+  error.value = null;
+}
 </script>
 
 <template>
@@ -42,7 +50,18 @@ const toggleDarkMode = () => {
       </div>
     </div>
     <div class="container mx-auto page">
-      <slot />
+      <NuxtErrorBoundary @error="handleError">
+        <slot />
+        <template #error="{ error }">
+          <div class="flex flex-col place-content-center justify-center min-h-screen w-full">
+            <div class="max-w-200">
+              <p>Oops, it looks like things did not go as planned :/</p>
+              <p>{{ error }}</p>
+              <button class="btn btn-primary btn-outline" @click="recoverFromError(error)">Try again</button>
+            </div>
+          </div>
+        </template>
+      </NuxtErrorBoundary>
     </div>
     <footer class="footer items-center p-4 mt-4 bg-neutral text-neutral-content">
       <div class="items-center grid-flow-col">

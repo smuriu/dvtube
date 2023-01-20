@@ -70,7 +70,7 @@ const loadMore = async () => {
         Showing {{ artists.length }} of {{ totalResults }} results for
         <span class="badge badge-lg badge-outline">{{ searchTerm }}</span>
       </h3>
-      <div class="w-full flex flex-col place-content-center place-items-center gap-5 md:flex-row md:flex-wrap ">
+      <div class="w-full flex flex-col place-content-center place-items-center gap-5 md:flex-row md:flex-wrap">
         <ArtistCard v-for="artist in artists" :key="artist.id" :artist="artist" />
       </div>
 

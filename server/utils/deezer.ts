@@ -60,9 +60,11 @@ export const getArtistAlbums = async (id: number) => {
   handleError(result)
 
   return (result as AlbumList).data
+  // TODO: return AlbumList instead? Result may be paged (more than 25? albums)
 }
 
 export const getUser = async (access_token: string) => {
+  // TODO: add error handling
   const user = await $fetch<{
     id: number,
     name: string,
