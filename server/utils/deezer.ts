@@ -68,7 +68,7 @@ export const getUser = async (access_token: string) => {
     name: string,
     link: string,
     picture_small: string
-  }>(withQuery(apiBaseURL, { access_token }))
+  }>(withQuery(joinURL(apiBaseURL, 'user/me'), { access_token }))
 
   return user
 }
