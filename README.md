@@ -1,42 +1,52 @@
-# Nuxt 3 Minimal Starter
+# dvtube - Deezer app for DVT assessment
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Requirements
 
-## Setup
+Deezer is an internet-based music streaming service. You are required to implement an app to explore its database:
+
+1.  Users should be able to search for artists. For every artist found show the artist's picture and the number of fans they have. On bigger screens, with more available space, also include the total number of albums.
+
+1.  Clicking/tapping the artist must allow users to see basic information about them, like its total number of fans. Also show its top 5 tracks along with a list of all their albums. For every album include the year in which it was released.
+
+## The app
+
+A full-stack Node/Vue app built with [Nuxt 3](https://nuxt.com/docs/getting-started/introduction).
+
+API calls to Deezer all happen server-side for a couple of reasons:
+
+1. Mitigate CORS issues
+
+1. Protect any API secrets
+
+### Setup
 
 Make sure to install the dependencies:
 
 ```bash
 # yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
 ```bash
-npm run build
+yarn build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+yarn preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
