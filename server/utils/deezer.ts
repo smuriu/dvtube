@@ -1,4 +1,4 @@
-import { joinURL, withQuery, parseQuery } from 'ufo'
+import { joinURL, withQuery } from 'ufo'
 
 const handleError = (result: object) => {
   if (Object.hasOwn(result, 'error')) {
@@ -12,26 +12,15 @@ const handleError = (result: object) => {
 
 const apiBaseURL = 'https://api.deezer.com'
 
-export const searchArtist = async (name: string, index?: number) => {
-  let uri = withQuery(joinURL(apiBaseURL, 'search', 'artist'), {
-    q: name
+export const searchArtist = async (name: string, index = 0) => {
+  const uri = withQuery(joinURL(apiBaseURL, 'search', 'artist'), {
+    q: name,
+    index: index.toString()
   })
-  if (index) {
-    uri = withQuery(uri, {
-      index: index.toString()
-    })
-  }
   const result = await $fetch<ArtistList | DeezerError>(uri)
   handleError(result)
 
-  const { data, total, next } = (result as ArtistList)
-  let nextIndex = null
-  if (next) {
-    const { index } = parseQuery(next)
-    nextIndex = parseInt(index as string)
-  }
-
-  return { data, total, nextIndex }
+  return result as ArtistList
 }
 
 export const getArtist = async (id: number) => {
@@ -54,23 +43,21 @@ export const getArtistTopTracks = async (id: number, limit?: number) => {
   return (result as TrackList).data
 }
 
-export const getArtistAlbums = async (id: number) => {
-  const uri = joinURL(apiBaseURL, 'artist', id.toString(), 'albums')
+export const getArtistAlbums = async (id: number, index = 0) => {
+  const uri = withQuery(joinURL(apiBaseURL, 'artist', id.toString(), 'albums'), {
+    index: index.toString()
+  })
   const result = await $fetch<AlbumList | DeezerError>(uri)
   handleError(result)
 
-  return (result as AlbumList).data
-  // TODO: return AlbumList instead? Result may be paged (more than 25? albums)
+  return result as AlbumList
 }
 
 export const getUser = async (access_token: string) => {
-  // TODO: add error handling
-  const user = await $fetch<{
-    id: number,
-    name: string,
-    link: string,
-    picture_small: string
-  }>(withQuery(joinURL(apiBaseURL, 'user/me'), { access_token }))
+  const user = await $fetch<User | DeezerError>(withQuery(joinURL(apiBaseURL, 'user/me'), {
+    access_token
+  }))
+  handleError(user)
 
-  return user
+  return user as User
 }

@@ -6,9 +6,15 @@ type DeezerError = {
   }
 }
 
+interface User {
+  id: number,
+  name: string,
+  link: string,
+  picture_small: string
+}
+
 interface ListResponse {
   total: number
-  next?: string
 }
 
 interface Artist {

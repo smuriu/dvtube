@@ -21,10 +21,10 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <div class="card card-compact w-full">
+  <div class="card card-compact w-full lg:w-2/3">
     <div class="card-body items-center text-center">
-      <h3 class="card-title">Find your favourite artist on Deezer</h3>
-      <form @submit.prevent="handleSubmit" class="w-full">
+      <h3 class="card-title">Find your favourite artist</h3>
+      <form @submit.prevent="handleSubmit" class="w-full py-4">
         <div class="form-control w-full">
           <div class="input-group lg:input-group-lg">
             <input :disabled="busy" type="text" placeholder="artist's name"

@@ -1,16 +1,33 @@
 <script setup lang="ts">
+import { withQuery } from 'ufo';
+
 const { id } = useRoute().params
+const { formatFans, formatTrackDuration } = useDeezer()
+
+const page = ref(1)
+const perPage = ref(25)
+const albums = ref<AlbumList>()
 
 const { data, error } = await useFetch(`/api/deezer/artist/${id}`)
 if (error.value) {
   throw error.value
 }
 
-const { formatFans, formatTrackDuration } = useDeezer()
+albums.value = data.value!.albums
 
 const artist = computed(() => data.value!.artist)
 const topTracks = computed(() => data.value!.topTracks)
-const albums = computed(() => data.value!.albums)
+
+const setPage = async (pageNum: number) => {
+  if (data.value) {
+    const index = (pageNum - 1) * perPage.value
+    albums.value = await $fetch<AlbumList>(withQuery(`/api/deezer/artist/${id}/albums`, {
+      index: index.toString()
+    }))
+    page.value = pageNum
+    // TODO: scroll to top
+  }
+}
 </script>
 
 <template>
@@ -33,18 +50,9 @@ const albums = computed(() => data.value!.albums)
       </div>
     </div>
 
-    <div class="divider">Albums</div>
-
-    <div class="w-full flex flex-col place-content-center place-items-center gap-5 md:flex-row md:flex-wrap">
-      <a v-for="album in albums" :key="album.id" :href="album.link" target="_blank">
-        <div class="card card-compact w-64 bg-neutral text-neutral-content shadow-xl">
-          <figure><img :src="album.cover_medium" alt="Album cover" /></figure>
-          <div class="card-body">
-            <div class="card-title">{{ album.title }}</div>
-            <p>{{ album.release_date }}</p>
-          </div>
-        </div>
-      </a>
-    </div>
+    <AppPager v-if="albums" title="Albums" :total="albums.total" :per-page="perPage" :page="page"
+      :count="albums.data.length" @set-page="setPage">
+      <AlbumCard v-for="album in albums.data" :key="album.id" :album="album" />
+    </AppPager>
   </div>
 </template>

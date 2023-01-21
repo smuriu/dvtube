@@ -1,16 +1,16 @@
 import { searchArtist } from '~~/server/utils/deezer'
 
 export default defineEventHandler(async (event) => {
-  const { term, index } = getQuery(event)
-  if (!term) {
-    throw createError({ statusCode: 400, statusMessage: 'Missing required parameter: term' })
+  const { name, index } = getQuery(event)
+  if (!name) {
+    throw createError({ statusCode: 400, statusMessage: 'Missing required parameter: name' })
   }
 
   let result
   if (index) {
-    result = await searchArtist(term as string, Number.parseInt(index as string))
+    result = await searchArtist(name as string, Number.parseInt(index as string))
   } else {
-    result = await searchArtist(term as string)
+    result = await searchArtist(name as string)
   }
 
   return result
