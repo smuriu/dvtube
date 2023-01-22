@@ -37,7 +37,7 @@ const selectPage = (pageNum: number) => {
 
 <template>
   <div class="w-full flex flex-col gap-4">
-    <div class="divider">{{ title }}</div>
+    <div class="divider"><span class="text-xl">{{ title }}</span></div>
     <div class="w-full flex flex-col md:flex-row flex-wrap content-center justify-center gap-5">
       <!-- page items -->
       <slot />

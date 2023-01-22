@@ -25,7 +25,6 @@ const setPage = async (pageNum: number) => {
       index: index.toString()
     }))
     page.value = pageNum
-    // TODO: scroll to top
   }
 }
 </script>
@@ -50,7 +49,7 @@ const setPage = async (pageNum: number) => {
       </div>
     </div>
 
-    <AppPager v-if="albums" title="Albums" :total="albums.total" :per-page="perPage" :page="page"
+    <AppPager v-if="albums" title="Discography" :total="albums.total" :per-page="perPage" :page="page"
       :count="albums.data.length" @set-page="setPage">
       <AlbumCard v-for="album in albums.data" :key="album.id" :album="album" />
     </AppPager>
