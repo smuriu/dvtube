@@ -3,15 +3,17 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline/esm/index.js'
 
 const props = withDefaults(defineProps<{
   busy?: boolean
+  init?: string
 }>(), {
-  busy: false
+  busy: false,
+  init: ''
 })
 
 const emit = defineEmits<{
   (e: 'search', term: string): void
 }>()
 
-const searchTerm = ref('')
+const searchTerm = ref(props.init)
 
 const handleSubmit = () => {
   if (!props.busy) {

@@ -68,7 +68,7 @@ const onSetPage = (pageNum: number) => {
 
 <template>
   <div class="w-full flex flex-col place-content-center items-center gap-4">
-    <ArtistSearchForm :busy="searching" @search="onSearch" />
+    <ArtistSearchForm :busy="searching" :init="search" @search="onSearch" />
 
     <AppPager v-if="searchResult" :title="`Results for '${search}'`" :total="totalResults" :count="artists.length"
       :per-page="perPage" :page="currentPage" @set-page="onSetPage">
