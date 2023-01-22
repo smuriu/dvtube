@@ -36,6 +36,8 @@ watchEffect(async () => {
     } finally {
       searching.value = false
     }
+  } else {
+    searchResult.value = null
   }
 })
 
