@@ -2,6 +2,12 @@
 defineProps<{
   album: Album
 }>()
+
+const { formatFans } = useDeezer()
+const formatReleaseDate = (date: Date | string) => {
+  const year = new Date(date).getFullYear()
+  return `${year} release`
+}
 </script>
 
 <template>
@@ -10,8 +16,10 @@ defineProps<{
       <figure><img :src="album.cover_medium" alt="Album cover" /></figure>
       <div class="card-body">
         <div class="card-title">{{ album.title }}</div>
-        <!-- TODO: format date -->
-        <p>{{ album.release_date }}</p>
+        <div class="flex">
+          <span class="flex-1">{{ formatReleaseDate(album.release_date) }}</span>
+          <span class="badge badge-sm badge-accent self-end">{{ formatFans(album.fans) }}</span>
+        </div>
       </div>
     </div>
   </a>
