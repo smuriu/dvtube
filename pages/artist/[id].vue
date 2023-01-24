@@ -31,6 +31,11 @@ const setPage = async (pageNum: number) => {
 
 <template>
   <div class="lg:basis-2/3 w-full flex flex-col items-center gap-4 py-4">
+
+    <Head>
+      <Title>{{ artist.name }}</Title>
+    </Head>
+
     <h2 class="text-3xl self-start">{{ artist.name }}</h2>
     <span class="self-start badge badge-outline badge-lg">{{ formatFans(artist.nb_fan) }}</span>
 
