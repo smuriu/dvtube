@@ -6,12 +6,8 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Missing required parameter: name' })
   }
 
-  let result
-  if (index) {
-    result = await searchArtist(name as string, Number.parseInt(index as string))
-  } else {
-    result = await searchArtist(name as string)
-  }
+  const searchIndex = index ? parseInt(index as string) : 0
+  const result = await searchArtist(name as string, searchIndex)
 
   return result
 })

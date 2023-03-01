@@ -1,5 +1,7 @@
 import { joinURL, withQuery } from 'ufo'
 
+const apiBaseURL = 'https://api.deezer.com'
+
 const handleError = (result: object) => {
   if (Object.hasOwn(result, 'error')) {
     const { type, message, code } = (result as DeezerError).error
@@ -9,8 +11,6 @@ const handleError = (result: object) => {
     })
   }
 }
-
-const apiBaseURL = 'https://api.deezer.com'
 
 export const searchArtist = async (name: string, index = 0) => {
   const uri = withQuery(joinURL(apiBaseURL, 'search', 'artist'), {
@@ -30,13 +30,10 @@ export const getArtist = async (id: number) => {
   return result as Artist
 }
 
-export const getArtistTopTracks = async (id: number, limit?: number) => {
-  let uri = joinURL(apiBaseURL, 'artist', id.toString(), 'top')
-  if (limit) {
-    uri = withQuery(uri, {
-      limit: limit.toString()
-    })
-  }
+export const getArtistTopTracks = async (id: number, limit = 5) => {
+  const uri = withQuery(joinURL(apiBaseURL, 'artist', id.toString(), 'top'), {
+    limit: limit.toString()
+  })
   const result = await $fetch<TrackList | DeezerError>(uri)
   handleError(result)
 

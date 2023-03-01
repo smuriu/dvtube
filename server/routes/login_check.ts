@@ -29,6 +29,6 @@ export default defineEventHandler(async (event) => {
   }
 
   if (error_reason) {
-    throw createError({ statusCode: 401, statusMessage: error_reason as string })
+    throw createError({ statusCode: 403, statusMessage: error_reason as string })
   }
 })

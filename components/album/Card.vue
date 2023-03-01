@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { formatFans } from '~~/utils/deezer'
+
 defineProps<{
   album: Album
 }>()
 
-const { formatFans } = useDeezer()
 const formatReleaseDate = (date: Date | string) => {
   const year = new Date(date).getFullYear()
   return `${year} release`

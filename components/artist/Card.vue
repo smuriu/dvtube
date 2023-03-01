@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { formatFans } from '~~/utils/deezer'
+
 defineProps<{
   artist: Artist
 }>()
-
-const { formatFans } = useDeezer()
 </script>
 
 <template>

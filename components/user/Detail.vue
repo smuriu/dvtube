@@ -2,9 +2,11 @@
 const { data: user } = await useFetch<User>('/api/deezer/user')
 
 const avatarSrc = computed(() => {
-  if (user.value) {
-    return user.value.picture_small ?? `https://avatars.dicebear.com/api/adventurer-neutral/${user.value.id}.svg`
+  if (!user.value) {
+    return ''
   }
+
+  return user.value.picture_small || `https://avatars.dicebear.com/api/adventurer-neutral/${user.value.id}.svg`
 })
 </script>
 
